@@ -84,6 +84,19 @@ fackNTA/
 
 ## Installation
 
+### Step 0: (WINDOWS ONLY) Open Command Prompt and Run as Administrator
+
+Open CMD and install Python either through the Official Website Installer or using CMD below:
+Official Website recommended. Remember to select "Add to PATH" during Installation.
+
+```python install
+winget install Python.Python.3
+```
+
+Install Git as well similarly from the official website. Also select "Add to PATH" option.
+
+*** SKIP STEP 0 IF YOU HAVE PYTHON AND GIT INSTALLED**
+
 ### Step 1: Clone/Download the Project
 
 
