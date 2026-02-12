@@ -9,7 +9,8 @@ import random
 import tkinter as tk
 from datetime import datetime
 import pygame
-
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 URL = "https://jeemain.nta.nic.in/"
 CHECK_INTERVAL = 60
 STATE_FILE = "state.json"

@@ -28,22 +28,24 @@ Detection layers:
 
 Anti-false-alarm:
   • Each layer produces a confidence score  (0-100)
-  • Alert fires only when  cumulative_score ≥ 70  AND  ≥ 2 layers triggered
+  • Alert fires only when  cumulative_score ≥ 60  AND  ≥ 2 layers triggered
   • Change must persist across 3 consecutive checks (spaced 10 s apart)
   • 5 min cooldown between alert bursts
 
 Usage:
-    python jee_results_monitor.py                 # default 30 s interval
+    python jee_results_monitor.py                 # default 300 s interval
     python jee_results_monitor.py --interval 15   # every 15 s
     python jee_results_monitor.py --no-sound       # silent mode
     python jee_results_monitor.py --test           # one-shot stability test
 """
 
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+
 import argparse
 import hashlib
 import time
 import datetime
-import os
 import json
 import random
 import re
