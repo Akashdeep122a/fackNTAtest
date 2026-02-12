@@ -4,7 +4,7 @@ set PY=.venv\Scripts\python.exe
 
 if not exist "%PY%" (
     echo Virtual environment not found.
-    echo Please create it first: python -m venv .venv
+    echo Please create it first
     pause
     exit /b
 )
