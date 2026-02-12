@@ -1,15 +1,15 @@
 @echo off
-
-set PY=.venv\Scripts\python.exe
+set "PY=.venv\Scripts\python.exe"
 
 if not exist "%PY%" (
-    echo Virtual environment not found.
-    echo Please create it first
+    echo [ERROR] Virtual environment not found.
+    echo Please read the README once again
     pause
     exit /b
 )
 
-start "" "%PY%" jee_results_monitor.py
-start "" "%PY%" Main_tracker.py
+:: Runs both scripts in separate windows simultaneously
+start "Results Monitor" "%PY%" jee_results_monitor.py
+start "Main Tracker" "%PY%" Main_tracker.py
 
 exit
