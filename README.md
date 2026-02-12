@@ -2,8 +2,10 @@
 
 A comprehensive monitoring and tracking system for JEE (Joint Entrance Examination) Main 2026 results. This project consists of two main components that work together to monitor the NTA score-card page and track result updates.
 
+
 ## Table of Contents
 
+- [Motivation](#motivation)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Requirements](#requirements)
@@ -12,6 +14,18 @@ A comprehensive monitoring and tracking system for JEE (Joint Entrance Examinati
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Troubleshooting](#troubleshooting)
+
+## Motivation
+
+**The Problem**: When JEE Main results are released by the NTA, their official website crashes within 15 minutes due to massive traffic from hundreds of thousands of students trying to access their scores simultaneously. This means you have only a narrow window to check your results before the server becomes inaccessible.
+
+**The Solution**: This project automatically monitors the NTA website 24/7 and alerts you the **instant** results go live—often within minutes of official release. You won't miss your window!
+
+### How It Works
+
+The monitoring scripts run continuously in the background and check the NTA website at regular intervals (default: every 30 seconds). When results are detected to be live, your computer will **play an audio alarm** — a recording saying **"RESULTS ARE OUT"** to immediately notify you.
+
+**Set it and forget it**: Start the monitor before the expected result date, let it run in the background, and you'll get an instant alert the moment results are available. By the time you hear the alarm and open the website, you'll be among the first to access the results page before it crashes.
 
 ## Features
 
@@ -29,7 +43,7 @@ A comprehensive monitoring and tracking system for JEE (Joint Entrance Examinati
   - Multi-layer validation
   - 3-check persistence verification
   - 5-minute cooldown between alerts
-- **Sound Notifications**: Audio alerts when results are detected
+- **Sound Notifications**: Plays `alarm.mp3` (a recording saying **"RESULTS ARE OUT"**) when results are detected—you'll hear it instantly even from another room!
 - **Customizable Intervals**: Adjustable monitoring frequency
 
 ### Main Tracker (`Main_tracker.py`)
@@ -175,6 +189,28 @@ The JEE Results Monitor uses these detection thresholds:
 - **Alert Cooldown**: 5 minutes between alert bursts
 - **Default Check Interval**: 30 seconds
 
+### Customizing the Alarm Sound
+
+The monitor plays `alarm.mp3` when results are detected. You can replace this file with your own audio file:
+
+
+1. Prepare your audio file in **MP3 format**
+   - Keep the filename as `alarm.mp3`
+   - Recommended duration: 5-10 seconds
+   - Use a clear, loud sound that will wake you up
+
+2. Place your `alarm.mp3` file in the project root directory (same level as the scripts)
+
+3. The next time you run the monitor, it will play your custom alarm
+
+
+#### Tips for Creating an Alarm Audio File
+
+- **Use Online Tools**: Convert text-to-speech or music files to MP3 using free online converters
+- **Record Your Own**: Use your phone or computer's built-in recorder to record a custom message
+- **System Sounds**: Extract alarm sounds from your operating system
+- **Music/Alert Services**: Download royalty-free alarm sounds from sites like Zapsplat or Freesound
+
 
 ## Troubleshooting
 
@@ -244,11 +280,23 @@ pip install -r requirements.txt
 
 ## Notes
 
-- The monitor is designed to minimize false positives by using multi-layer detection
-- Monitoring runs continuously; use Ctrl+C to stop
-- Results data is timestamped for reference
-- The system respects rate limiting with configurable intervals
-- Security: The project includes proper SSL certificate verification
+- **Always Running**: Keep the monitor running 24/7 before and during the expected result release date. The earlier you start it, the more reliable the detection.
+- **Alarm File**: The `alarm.mp3` file contains a voice recording saying **"RESULTS ARE OUT"**. Make sure it exists in the project directory for notifications to work. You can replace it with your own audio file if desired (must be in MP3 format).
+- **Instant Alert**: Once results go live on the NTA website, the alarm will typically sound within 1-3 minutes of the official release, giving you ample time before the website crashes.
+- **No Manual Checking**: You don't need to manually refresh the NTA website—the monitor does it automatically every 30 seconds (or your custom interval).
+- **Minimize False Positives**: The multi-layer detection system is designed to only alert when it's very confident results are actually live, reducing unnecessary alarms.
+- **Stop Command**: Use Ctrl+C in the terminal to stop the monitor at any time.
+- **Results Data**: All check events are timestamped and can be reviewed in the log file for reference.
+- **Rate Limiting**: The system respects rate limiting with configurable check intervals.
+- **Security**: The project includes proper SSL certificate verification for secure HTTPS connections.
+
+## Important Reminders
+
+1. **Start Early**: Begin monitoring at least a day before the expected results release. NTA announcements sometimes come earlier than expected.
+2. **Keep Your Device On**: Your computer must remain powered on and connected to the internet for the monitor to work.
+3. **Volume Up**: Ensure your speakers/headphones are connected and volume is audible so you hear the alarm.
+4. **Quick Action**: When the alarm sounds, immediately open the NTA website to check your results before the rush crashes the server.
+
 
 
 
